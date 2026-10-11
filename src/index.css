@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* ---- DracoPyre Strike design tokens (single source of truth for theme colors) ----
+     Colorful/light is the default theme -- vivid, energetic, built for the
+     game art and gradients to pop. Dark mode is an explicit opt-in (see
+     ThemeToggle / useTheme) applied via [data-theme="dark"] below, which
+     overrides every variable in this block. Nothing outside this file
+     should ever hardcode a theme color. */
+  --color-bg: 253 250 246;           /* Daylight -- soft warm white */
+  --color-surface: 255 255 255;      /* card / surface background */
+  --color-surface-2: 245 236 227;    /* raised surface / hover */
+  --color-primary: 220 38 38;        /* Dragonfire -- signature red */
+  --color-primary-2: 234 88 12;      /* Blazeorange -- deepened for contrast on white */
+  --color-secondary: 180 83 9;       /* Hoardgold -- deepened amber for contrast on white */
+  --color-text: 26 15 13;
+  --color-text-muted: 90 68 62;      /* warm dark gray body text on light */
+  --color-muted: 158 138 128;        /* warm mid gray -- tertiary text, borders */
+  --color-success: 21 128 61;
+  --color-warning: 180 83 9;
+  --color-danger: 190 18 60;         /* crimson -- distinct from primary red, HOT badge / destructive */
+}
+
+[data-theme='dark'] {
+  --color-bg: 10 8 10;               /* Void -- near-black with a warm ember undertone */
+  --color-surface: 24 16 16;         /* Ember Ash -- card/surface background */
+  --color-surface-2: 34 21 19;       /* Ember Ash 2 -- raised surface / hover */
+  --color-primary: 220 38 38;        /* Dragonfire -- signature red */
+  --color-primary-2: 249 115 22;     /* Blazeorange -- flame tone */
+  --color-secondary: 245 158 11;     /* Hoardgold -- molten gold accent */
+  --color-text: 255 255 255;
+  --color-text-muted: 224 205 197;   /* warm light gray body text on dark */
+  --color-muted: 148 120 112;        /* warm gray -- tertiary text, borders */
+  --color-success: 34 197 94;
+  --color-warning: 245 158 11;
+  --color-danger: 239 68 68;         /* alarm red -- HOT badge / destructive */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html {
+  color-scheme: light;
+}
+html[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-bg text-text font-sans antialiased;
+  background-image:
+    radial-gradient(ellipse 70% 45% at 20% -10%, rgb(var(--color-primary) / 0.16), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgb(var(--color-secondary) / 0.13), transparent 55%),
+    radial-gradient(circle at 1px 1px, rgb(var(--color-text) / 0.05) 1px, transparent 0);
+  background-size: auto, auto, 28px 28px;
+  background-attachment: fixed, fixed, fixed;
+  background-repeat: no-repeat, no-repeat, repeat;
+  transition: background-color 200ms ease;
+}
+
+h1, h2, h3, h4 {
+  @apply font-display;
+  letter-spacing: -0.01em;
+}
+
+::selection {
+  background: rgb(var(--color-primary) / 0.35);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--color-surface));
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--color-muted) / 0.6);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--color-primary));
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--color-secondary));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ---- Reusable utility classes (kept intentionally small) ---- */
+
+.glass {
+  background: rgb(var(--color-surface) / 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgb(var(--color-text) / 0.08);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, rgb(var(--color-primary)), rgb(var(--color-secondary)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Scoreboard numerals — the site's tabular-mono treatment for every stat,
+   score, rating, timer and play count. This is the recurring "signature"
+   detail tying the whole UI back to an arcade scoreboard. */
+.stat-mono {
+  @apply font-mono tabular-nums tracking-tight;
+}
+
+.eyebrow {
+  @apply font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-secondary;
+}
+
+.badge {
+  @apply stat-mono inline-flex items-center rounded-md px-1.5 py-0.5 text-[10px] font-bold tracking-wide;
+}
+
+.btn-focus {
+  @apply outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-bg;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: rgb(var(--color-primary));
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes markIn {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.mark-in {
+  animation: markIn 220ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  transform-origin: center;
+}
+
+@keyframes lineIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.line-in {
+  animation: lineIn 280ms ease-out 120ms both;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.55);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.pop-in {
+  animation: popIn 260ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translateX(-1px); }
+  20%, 80% { transform: translateX(2px); }
+  30%, 50%, 70% { transform: translateX(-3px); }
+  40%, 60% { transform: translateX(3px); }
+}
+.shake {
+  animation: shake 400ms ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
