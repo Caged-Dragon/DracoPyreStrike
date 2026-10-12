@@ -1,6 +1,7 @@
 import { useCallback } from 'react'
 import { useLocalStorage } from './useLocalStorage'
 import type { ScoreDirection } from '@/data/games'
+import { addFavorite as cloudAddFavorite, removeFavorite as cloudRemoveFavorite, reportRun, touchGame } from '@/dps'
 
 export interface RecentEntry {
   slug: string
@@ -9,7 +10,7 @@ export interface RecentEntry {
 
 const RECENT_LIMIT = 12
 
-/** Favorites — no account required, stored locally (Section 22). */
+/** Favorites — stored locally; mirrored to the player's Dragon Realm account when signed in. */
 export function useFavorites() {
   const [favorites, setFavorites] = useLocalStorage<string[]>('favorites', [])
 
@@ -18,12 +19,17 @@ export function useFavorites() {
   const toggleFavorite = useCallback(
     (slug: string) => {
       setFavorites((prev) => (prev.includes(slug) ? prev.filter((s) => s !== slug) : [slug, ...prev]))
+      if (favorites.includes(slug)) void cloudRemoveFavorite(slug)
+      else void cloudAddFavorite(slug)
     },
-    [setFavorites],
+    [favorites, setFavorites],
   )
 
   const removeFavorite = useCallback(
-    (slug: string) => setFavorites((prev) => prev.filter((s) => s !== slug)),
+    (slug: string) => {
+      setFavorites((prev) => prev.filter((s) => s !== slug))
+      void cloudRemoveFavorite(slug)
+    },
     [setFavorites],
   )
 
@@ -37,6 +43,7 @@ export function useRecentlyPlayed() {
   const addRecentlyPlayed = useCallback(
     (slug: string) => {
       setRecent((prev) => [{ slug, playedAt: Date.now() }, ...prev.filter((r) => r.slug !== slug)].slice(0, RECENT_LIMIT))
+      void touchGame(slug)
     },
     [setRecent],
   )
@@ -51,8 +58,8 @@ type ScoreMap = Record<string, number>
 /**
  * High scores per game (Section 24). `direction` controls whether a bigger
  * number is better ("high", e.g. points) or a smaller one is ("low", e.g.
- * seconds or attempts) — architected so a future backend leaderboard can
- * slot in behind the same `recordScore` call.
+ * seconds or attempts). Every finished run is also posted to the shared
+ * Dragon Realm leaderboard (queued until login for guests).
  */
 export function useHighScore(slug: string | undefined, direction: ScoreDirection = 'high') {
   const [scores, setScores] = useLocalStorage<ScoreMap>('scores', {})
@@ -62,6 +69,7 @@ export function useHighScore(slug: string | undefined, direction: ScoreDirection
   const recordScore = useCallback(
     (value: number) => {
       if (!slug || !Number.isFinite(value)) return
+      void reportRun(slug, value)
       setScores((prev) => {
         const current = prev[slug]
         const better = current === undefined || (direction === 'high' ? value > current : value < current)

@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { Menu, X, Search as SearchIcon, Heart, ChevronDown } from 'lucide-react'
 import Logo from '@/components/Logo'
 import ThemeToggle from '@/components/ThemeToggle'
+import AccountMenu from '@/components/AccountMenu'
 import { CATEGORIES } from '@/data/categories'
 import { useFavorites } from '@/hooks/usePlayerData'
 
@@ -91,6 +92,9 @@ export default function Header({ minimal = false }: HeaderProps) {
             <NavLink to="/new" className={linkClass}>
               New
             </NavLink>
+            <NavLink to="/leaderboard" className={linkClass}>
+              Leaderboards
+            </NavLink>
           </nav>
         )}
 
@@ -134,6 +138,8 @@ export default function Header({ minimal = false }: HeaderProps) {
               </span>
             )}
           </Link>
+
+          <AccountMenu />
 
           {!minimal && (
             <button
@@ -181,6 +187,12 @@ export default function Header({ minimal = false }: HeaderProps) {
           </Link>
           <Link to="/new" onClick={() => setMobileOpen(false)} className={mobileLinkClass}>
             New Games
+          </Link>
+          <Link to="/leaderboard" onClick={() => setMobileOpen(false)} className={mobileLinkClass}>
+            Leaderboards
+          </Link>
+          <Link to="/profile" onClick={() => setMobileOpen(false)} className={mobileLinkClass}>
+            My Profile
           </Link>
           <Link to="/favorites" onClick={() => setMobileOpen(false)} className={mobileLinkClass}>
             Favorites

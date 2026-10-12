@@ -7,7 +7,7 @@ export const SITE_CONFIG = {
   tagline: 'One Realm. Every Game.',
   description: 'Free games from across the Realm. Instant play. Anywhere.',
   studioLine: 'A DracoPyre Games Production',
-  version: '3.0',
+  version: '4.0',
   year: new Date().getFullYear(),
   social: {
     twitter: 'https://twitter.com',
@@ -31,6 +31,7 @@ export const FOOTER_LINKS = {
     { label: 'Categories', to: '/category/action' },
     { label: 'Popular', to: '/popular' },
     { label: 'New Games', to: '/new' },
+    { label: 'Leaderboards', to: '/leaderboard' },
   ],
   company: [
     { label: 'About', to: '/about' },

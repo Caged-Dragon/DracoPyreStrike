@@ -92,13 +92,13 @@ export const GAMES: GameMeta[] = [
       'Choose Classic, Constant Level, or Level Campaign from the main menu.',
       'Steer the wyrm toward glowing embers to grow.',
       'Slip through blue rift portals to warp across the lair \u2014 red rifts are traps.',
-      'Clear a lair\u2019s target area to advance. Progress and best scores save automatically on that site.',
+      'Clear a lair\u2019s target area to advance. Sign in with your Dragon Realm account and your progress and best scores follow you across every game.',
     ],
     features: ['10 hand-built levels', '3 game modes', '5 speed settings', 'Rift portals', 'Save & continue'],
     hasScore: false,
     scoreDirection: 'high',
     scoreUnit: 'pts',
-    externalUrl: 'http://localhost:5171',
+    externalUrl: 'https://emberwyrmsite.vercel.app',
   },
   {
     id: 'g-dragons-hoard',
@@ -159,7 +159,7 @@ export const GAMES: GameMeta[] = [
     hasScore: false,
     scoreDirection: 'high',
     scoreUnit: 'pts',
-    externalUrl: 'http://localhost:5172',
+    externalUrl: 'https://dragonbreaker-site.vercel.app',
   },
   {
     id: 'g-dragon-flight',
@@ -189,7 +189,7 @@ export const GAMES: GameMeta[] = [
     hasScore: false,
     scoreDirection: 'high',
     scoreUnit: 'pts',
-    externalUrl: 'http://localhost:5173',
+    externalUrl: 'https://dragon-flight-site.vercel.app',
   },
   {
     id: 'g-dragons-lair',

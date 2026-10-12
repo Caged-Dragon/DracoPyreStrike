@@ -94,8 +94,7 @@ export default function Feedback() {
       <p className="eyebrow mb-2">Version {SITE_CONFIG.version}</p>
       <h1 className="font-display text-2xl font-bold sm:text-3xl">Send Word to the Realm</h1>
       <p className="mt-2 text-sm text-textMuted sm:text-base">
-        DracoPyre Strike is built by a small team with no backend behind it — your rating and message go straight to us by
-        email, not into a database. We read every one.
+        Your rating and message go straight to us by email — they are never stored in the game database or tied to your account. We read every one.
       </p>
 
       {lastFeedback && (

@@ -29,17 +29,18 @@ export default function InfoPage({ title, paragraphs }: InfoPageProps) {
 export const ABOUT_COPY = {
   title: 'About DracoPyre Strike',
   paragraphs: [
-    `${SITE_CONFIG.siteName} is a free browser gaming platform built by ${SITE_CONFIG.studioName}. Every game in the Realm is dragon-forged — the idea is simple: open the site, pick a game, click play. No installs, no accounts, no friction.`,
+    `${SITE_CONFIG.siteName} is a free browser gaming platform built by ${SITE_CONFIG.studioName}. Every game in the Realm is dragon-forged — the idea is simple: open the site, pick a game, click play. No installs, no friction — and an optional free account if you want your progress to follow you.`,
     "The library launched with 10 original, fully playable games spanning arcade, puzzle, action and strategy — each one reimagined with the Realm's own dragons, hoards and lairs. It's built to grow — the same game registry that powers 10 titles today is designed to scale to hundreds without a redesign.",
-    'Every game runs entirely in your browser. Favorites, recently played games and high scores are saved locally on your device.',
+    'Every game runs entirely in your browser. Play as a guest and your favorites, recently played games and high scores are saved on your device — or sign in to keep them in your Dragon Realm account, shared across DracoPyre Strike, Ember Wyrm, Drakebreaker and Dragon Flight, with leaderboards and cloud saves.',
   ],
 }
 
 export const HELP_COPY = {
   title: 'Help & FAQ',
   paragraphs: [
-    'Do I need an account? No. Every game is playable instantly, and your favorites, recently played list and high scores are saved to this browser automatically.',
-    "Where is my data stored? Locally, in your browser's storage. Clearing your browser data or switching devices will reset it, since nothing is sent to a server in this version of DracoPyre Strike.",
+    'Do I need an account? No. Every game is playable instantly as a guest, and your favorites, recently played list and high scores are saved to this browser automatically. A free account adds leaderboards, cloud saves and progress that follows you between devices and between all the Realm\'s game sites.',
+    "Where is my data stored? Guests: locally, in your browser's storage — clearing it or switching devices resets it. Signed-in players: in your Dragon Realm account, so it survives both. Scores you earn as a guest are added to your account the next time you sign in.",
+    'Why do I sign in again on each game site? Every game is its own website, so each one keeps its own login session. It is the same account everywhere — the same email and password — and your scores, saves and XP are shared.',
     "A game won't load — what do I do? Use the Try Again button on the game screen, or refresh the page. If it persists, it may not be supported in your current browser.",
     'Can I play on my phone? Yes — every game supports touch controls, and the layout adapts to any screen size.',
   ],
@@ -56,10 +57,11 @@ export const CONTACT_COPY = {
 export const PRIVACY_COPY = {
   title: 'Privacy Policy',
   paragraphs: [
-    `${SITE_CONFIG.siteName} does not require an account and does not operate a backend in this version of the platform.`,
-    "Favorites, recently played games, high scores and your sound preference are stored locally on your device using your browser's localStorage. This data never leaves your browser and is not transmitted to our servers, because — in this version — we don't have any.",
-    "Clearing your browser's site data, using a different browser, or switching devices will reset this local data.",
-    'If a future version of DracoPyre Strike introduces accounts or cloud sync, this policy will be updated before that data leaves your device.',
+    `${SITE_CONFIG.siteName} does not require an account. You can play every game as a guest.`,
+    "As a guest, favorites, recently played games, high scores and your sound preference are stored locally on your device using your browser's localStorage and are not transmitted to us.",
+    'If you create a Dragon Realm account, we store your email address, username, display name, avatar, favorites, game scores, play counts and game saves so they can follow you across the Realm\'s game sites. This data is held in a hosted database (Supabase) and is protected by per-user access rules: only you can read or change your saves and favorites. Your username, avatar, level and scores are visible on public leaderboards; your email address is not.',
+    "Clearing your browser's site data, using a different browser, or switching devices will reset guest data. Account data stays until you ask us to delete it — contact hello@dracopyrestrike.game and we'll remove your account and everything attached to it.",
+    'We do not sell your data or use it for advertising.',
   ],
 }
 

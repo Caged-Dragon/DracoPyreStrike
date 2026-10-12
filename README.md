@@ -3,7 +3,7 @@
 **One Realm. Every Game.**
 *A DracoPyre Games Production*
 
-A free, browser-based gaming platform. Ten original games, instant play, no account required.
+A free, browser-based gaming platform. Ten original games, instant play. Accounts are optional — sign in to get leaderboards, cloud saves and progress shared across the whole Dragon Realm (see `ECOSYSTEM.md`).
 
 ---
 
@@ -13,7 +13,7 @@ A free, browser-based gaming platform. Ten original games, instant play, no acco
 - **React Router v6** — client-side routing
 - **Tailwind CSS v3** — utility styling, driven by a centralized CSS-variable token system
 - **lucide-react** — icon set
-- Zero other runtime dependencies. No backend, no database — everything ships as a static site.
+- **Supabase** (`@supabase/supabase-js`) — accounts, leaderboards, cloud saves. The site itself is still a static build; guests need no backend.
 
 ## Getting started
 
@@ -46,7 +46,9 @@ src/
 
 - **10 fully playable games** — see below. Every one has real win/lose logic, a restart flow, and (where it makes sense) a locally-tracked best score.
 - **Discovery**: home page (hero, trending, popular, categories, new, recently played, recommended), a filterable/sortable Games page, category pages, and full-text search across title/description/category/tags.
-- **Favorites & Recently Played** — no account needed, stored in `localStorage`.
+- **Accounts (v4.0)** — email + password sign-in shared by all four Dragon Realm sites; guests keep working exactly as before.
+- **Leaderboards & Profile** — `/leaderboard` (per game + overall XP) and `/profile` (stats, level, avatar/username).
+- **Favorites & Recently Played** — stored in `localStorage`; mirrored to your account when signed in.
 - **High scores** — per-game best score/time/attempts, stored locally, direction-aware (a lower time can be "better" than a higher one).
 - **Feedback & Ratings (v2.0)** — a star rating plus a categorized feedback form that composes a real email to the studio, with a clipboard fallback. See below.
 - **Colorful theme by default, dark mode opt-in** — toggle in the header, persists locally, applied before first paint (no flash of the wrong theme on reload).

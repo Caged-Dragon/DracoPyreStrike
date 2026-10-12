@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import PageLoader from '@/components/PageLoader'
+import CloudSync from '@/components/CloudSync'
 import InfoPage, { ABOUT_COPY, HELP_COPY, CONTACT_COPY, PRIVACY_COPY, TERMS_COPY } from '@/pages/Info'
 
 const Home = lazy(() => import('@/pages/Home'))
@@ -13,6 +14,8 @@ const Category = lazy(() => import('@/pages/Category'))
 const Favorites = lazy(() => import('@/pages/Favorites'))
 const Search = lazy(() => import('@/pages/Search'))
 const Feedback = lazy(() => import('@/pages/Feedback'))
+const Leaderboard = lazy(() => import('@/pages/Leaderboard'))
+const Profile = lazy(() => import('@/pages/Profile'))
 const NotFound = lazy(() => import('@/pages/NotFound'))
 
 export default function App() {
@@ -24,6 +27,7 @@ export default function App() {
       <a href="#main" className="skip-link">
         Skip to content
       </a>
+      <CloudSync />
       <Header minimal={isPlayRoute} />
       <main id="main" className="flex-1">
         <Suspense fallback={<PageLoader label="Entering the Realm" fullHeight />}>
@@ -39,6 +43,8 @@ export default function App() {
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/search" element={<Search />} />
             <Route path="/feedback" element={<Feedback />} />
+            <Route path="/leaderboard" element={<Leaderboard />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/about" element={<InfoPage {...ABOUT_COPY} />} />
             <Route path="/help" element={<InfoPage {...HELP_COPY} />} />
             <Route path="/contact" element={<InfoPage {...CONTACT_COPY} />} />
