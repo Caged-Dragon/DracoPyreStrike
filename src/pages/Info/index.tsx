@@ -12,7 +12,7 @@ interface InfoPageProps {
 export default function InfoPage({ title, paragraphs }: InfoPageProps) {
   useDocumentMeta(`${title} — ${SITE_CONFIG.siteName}`, paragraphs[0])
   return (
-    <div className="mx-auto max-w-2xl px-4 py-14 sm:px-6">
+    <div className="mx-auto max-w-2xl py-14 px-fluid">
       <h1 className="font-display text-2xl font-bold sm:text-3xl">{title}</h1>
       <div className="mt-5 space-y-4 text-sm leading-relaxed text-textMuted sm:text-base">
         {paragraphs.map((p, i) => (

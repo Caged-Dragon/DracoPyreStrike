@@ -1,4 +1,5 @@
 import GameCard from '@/components/GameCard'
+import Reveal from '@/components/Reveal'
 import { GameCardSkeletonGrid } from '@/components/Skeletons'
 import type { GameMeta } from '@/data/games'
 
@@ -8,12 +9,15 @@ interface GameGridProps {
   skeletonCount?: number
 }
 
+/** Fluid auto-fill grid: column count and card width flex continuously with the screen. */
 export default function GameGrid({ games, loading = false, skeletonCount = 8 }: GameGridProps) {
   if (loading) return <GameCardSkeletonGrid count={skeletonCount} />
   return (
-    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 xl:grid-cols-5">
-      {games.map((game) => (
-        <GameCard key={game.slug} game={game} />
+    <div className="fluid-grid">
+      {games.map((game, i) => (
+        <Reveal key={game.slug} delay={Math.min(i, 9) * 55}>
+          <GameCard game={game} />
+        </Reveal>
       ))}
     </div>
   )

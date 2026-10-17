@@ -19,6 +19,7 @@ export default {
       },
       fontFamily: {
         display: ['"Space Grotesk"', 'sans-serif'],
+        fantasy: ['Cinzel', 'Georgia', 'serif'],
         sans: ['Manrope', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
       },

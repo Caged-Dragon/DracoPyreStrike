@@ -21,7 +21,7 @@ export default function Category() {
 
   if (!category) {
     return (
-      <div className="mx-auto max-w-xl px-4 py-16 sm:px-6">
+      <div className="mx-auto max-w-xl py-16 px-fluid">
         <EmptyState
           icon={Frown}
           title="We couldn't find that category"
@@ -45,14 +45,14 @@ export default function Category() {
     <div>
       <div className={`relative overflow-hidden bg-gradient-to-br ${category.gradient}`}>
         <div className="absolute inset-0 bg-black/40" aria-hidden="true" />
-        <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
+        <div className="container-fluid relative py-12 sm:py-16">
           <p className="eyebrow mb-2 text-white/80">Category</p>
           <h1 className="font-display text-3xl font-extrabold text-white sm:text-4xl">{category.title}</h1>
           <p className="mt-2 max-w-lg text-white/85">{category.description}</p>
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
+      <div className="container-fluid py-8 sm:py-10">
         {featured && (
           <div className="mb-8 flex flex-col gap-4 rounded-2xl border border-text/5 bg-surface p-4 sm:flex-row sm:items-center">
             <GameThumb

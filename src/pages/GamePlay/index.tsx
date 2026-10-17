@@ -48,7 +48,7 @@ export default function GamePlay() {
 
   if (!game) {
     return (
-      <div className="mx-auto max-w-xl px-4 py-16 sm:px-6">
+      <div className="mx-auto max-w-xl py-16 px-fluid">
         <EmptyState
           icon={Frown}
           title="We couldn't find this game"
@@ -62,12 +62,12 @@ export default function GamePlay() {
 
   if (game.externalUrl) {
     return (
-      <div className="mx-auto max-w-lg px-4 py-16 text-center sm:px-6">
+      <div className="mx-auto max-w-lg py-16 text-center px-fluid">
         <GameThumb title={game.title} icon={game.icon} gradient={game.gradient} className="mx-auto h-28 w-28 rounded-2xl shadow-glow" iconClassName="h-12 w-12" />
         <h1 className="mt-5 font-display text-xl font-bold">{game.title} lives on its own site</h1>
-        <p className="mt-2 text-sm text-textMuted">This one's a full separate build, not an embedded page — Play Now opens it in a new tab.</p>
+        <p className="mt-2 text-sm text-textMuted">This one's a full separate build, not an embedded page — Play Now takes you there, and its Exit button brings you back here.</p>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-          <a href={game.externalUrl} target="_blank" rel="noopener noreferrer" className="btn-focus flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold text-white shadow-glow transition-transform hover:scale-105 hover:bg-primary2">
+          <a href={game.externalUrl} className="btn-focus flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold text-white shadow-glow transition-transform hover:scale-105 hover:bg-primary2">
             <Play className="h-4 w-4 fill-white" /> Play Now <ExternalLink className="h-3.5 w-3.5" />
           </a>
           <Link to={`/games/${game.slug}`} className="btn-focus rounded-full border border-text/10 bg-surface px-6 py-3 text-sm font-semibold text-textMuted transition-colors hover:text-text">
@@ -82,7 +82,7 @@ export default function GamePlay() {
 
   if (!GameComponent) {
     return (
-      <div className="mx-auto max-w-xl px-4 py-16 sm:px-6">
+      <div className="mx-auto max-w-xl py-16 px-fluid">
         <EmptyState
           icon={Frown}
           title="This game isn't available yet"

@@ -4,9 +4,9 @@ import { useLocalStorage } from './useLocalStorage'
 export type Theme = 'light' | 'dark'
 
 /**
- * DracoPyre Strike defaults to the colorful/light theme; dark mode is an
- * explicit opt-in the person switches on when they want it -- never the
- * default, and independent of the OS's prefers-color-scheme. Built on
+ * DracoPyre Strike defaults to the dark "Dragonforge" gaming theme; the
+ * colorful/light theme is an explicit opt-in -- independent of the OS's
+ * prefers-color-scheme. Built on
  * useLocalStorage so the choice syncs across tabs and persists locally
  * (key: "dracopyre:theme"). Applied via a `data-theme` attribute on <html>,
  * which every color in index.css reads from. A tiny inline script in
@@ -14,7 +14,7 @@ export type Theme = 'light' | 'dark'
  * flash of the wrong theme on reload.
  */
 export function useTheme() {
-  const [theme, setTheme] = useLocalStorage<Theme>('theme', 'light')
+  const [theme, setTheme] = useLocalStorage<Theme>('theme', 'dark')
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)

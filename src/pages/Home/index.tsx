@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import GameHero from '@/components/GameHero'
+import Reveal from '@/components/Reveal'
+import Marquee from '@/components/Marquee'
+import CountUp from '@/components/CountUp'
 import Section from '@/components/Section'
 import GameGrid from '@/components/GameGrid'
 import CategoryCard from '@/components/CategoryCard'
@@ -32,6 +35,41 @@ export default function Home() {
     <div>
       <GameHero game={featured} />
 
+      <div className="container-fluid -mt-[clamp(1rem,0.4rem+3vw,3.5rem)] pb-2">
+        <div className="stat-grid">
+          {[
+            { v: <CountUp to={GAMES.length} />, l: 'Games' },
+            { v: <CountUp to={4} />, l: 'Realms' },
+            { v: <CountUp to={100} suffix="%" />, l: 'Free' },
+            { v: <CountUp to={0} />, l: 'Installs' },
+          ].map((s, i) => (
+            <Reveal key={s.l} delay={i * 90}>
+              <div className="stat-tile">
+                <b>{s.v}</b>
+                <span>{s.l}</span>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+
+      <div className="py-[clamp(1rem,0.6rem+2vw,2.5rem)]">
+        <Marquee label="Games in the Realm">
+          {GAMES.map((g) => (
+            <Link
+              key={g.slug}
+              to={`/games/${g.slug}`}
+              className="btn-focus flex items-center gap-[clamp(0.6rem,2vw,1.5rem)] whitespace-nowrap rounded font-fantasy text-[length:clamp(0.9rem,0.75rem+0.8vw,1.4rem)] font-bold uppercase tracking-[0.18em] text-text/55 transition-colors hover:text-secondary"
+            >
+              {g.title}
+              <span className="text-primary" aria-hidden="true">
+                ✦
+              </span>
+            </Link>
+          ))}
+        </Marquee>
+      </div>
+
       <Section eyebrow="Trending Now" title="Trending Games" viewAllTo="/trending">
         <GameGrid games={trending.length ? trending : popular.slice(0, 5)} />
       </Section>
@@ -40,14 +78,16 @@ export default function Home() {
         <GameGrid games={popular} />
       </Section>
 
-      <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
-        <div className="mb-5">
-          <p className="eyebrow mb-1">Browse</p>
-          <h2 className="font-display text-xl font-bold sm:text-2xl">Browse Categories</h2>
-        </div>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5">
-          {CATEGORIES.map((c) => (
-            <CategoryCard key={c.id} category={c} />
+      <section className="container-fluid py-section">
+        <Reveal className="mb-[clamp(1.1rem,0.8rem+1.2vw,2rem)]">
+          <p className="eyebrow mb-2">Browse</p>
+          <h2 className="section-title font-display font-bold">Browse Categories</h2>
+        </Reveal>
+        <div className="fluid-grid cats">
+          {CATEGORIES.map((c, i) => (
+            <Reveal key={c.id} delay={Math.min(i, 8) * 60}>
+              <CategoryCard category={c} />
+            </Reveal>
           ))}
         </div>
       </section>
@@ -66,15 +106,21 @@ export default function Home() {
         <GameGrid games={recommended} />
       </Section>
 
-      <section className="mx-auto max-w-7xl px-4 py-14 text-center sm:px-6">
-        <h2 className="font-display text-2xl font-bold sm:text-3xl">Ready for one more round?</h2>
-        <p className="mx-auto mt-2 max-w-md text-textMuted">Every game in the library, in one place.</p>
-        <Link
-          to="/games"
-          className="btn-focus mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-bold text-white shadow-glow transition-transform hover:scale-105 hover:bg-primary2"
-        >
-          Explore All Games <ArrowRight className="h-4 w-4" />
-        </Link>
+      <section className="container-fluid py-section">
+        <Reveal>
+          <div className="relative isolate overflow-hidden rounded-[clamp(1.25rem,1rem+1.5vw,2.25rem)] border border-text/10 px-[clamp(1.25rem,0.6rem+4vw,4rem)] py-[clamp(2.5rem,1.5rem+6vw,6rem)] text-center shadow-glow">
+            <div className="hero-art !inset-0 !z-[-3] !bg-[url('/images/lair.webp')] !bg-center" aria-hidden="true" />
+            <div className="absolute inset-0 z-[-2] bg-gradient-to-t from-bg via-bg/60 to-bg/80" aria-hidden="true" />
+            <h2 className="title-forge text-[length:clamp(1.6rem,1rem+3.2vw,3.4rem)] leading-tight">Ready for one more round?</h2>
+            <p className="mx-auto mt-3 max-w-md text-[length:var(--fs-lead)] text-textMuted">Every game in the Realm, in one place — one account, one leaderboard.</p>
+            <Link
+              to="/games"
+              className="btn-focus btn-glow btn-pulse mt-[clamp(1.25rem,1rem+1.4vw,2.25rem)] inline-flex items-center gap-2 rounded-full bg-primary px-[clamp(1.4rem,1rem+1.4vw,2.3rem)] py-[clamp(0.75rem,0.6rem+0.5vw,1.05rem)] text-sm font-bold text-white shadow-glow"
+            >
+              Explore All Games <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </Reveal>
       </section>
     </div>
   )

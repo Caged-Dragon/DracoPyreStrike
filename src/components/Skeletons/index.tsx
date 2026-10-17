@@ -22,7 +22,7 @@ export function GameCardSkeletonGrid({ count = 8 }: { count?: number }) {
 
 export function HeroSkeleton() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6" aria-hidden="true">
+    <div className="container-fluid py-14" aria-hidden="true">
       <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center">
         <div className="space-y-4">
           <div className="h-3 w-24 animate-pulse rounded bg-surface2" />

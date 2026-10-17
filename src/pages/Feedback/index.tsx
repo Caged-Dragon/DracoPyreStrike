@@ -90,7 +90,7 @@ export default function Feedback() {
   const hasHistory = favorites.length > 0 || recent.length > 0
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-10 sm:px-6 sm:py-14">
+    <div className="mx-auto max-w-2xl py-10 sm:py-14 px-fluid">
       <p className="eyebrow mb-2">Version {SITE_CONFIG.version}</p>
       <h1 className="font-display text-2xl font-bold sm:text-3xl">Send Word to the Realm</h1>
       <p className="mt-2 text-sm text-textMuted sm:text-base">

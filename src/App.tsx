@@ -4,6 +4,8 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import PageLoader from '@/components/PageLoader'
 import CloudSync from '@/components/CloudSync'
+import ScrollProgress from '@/components/ScrollProgress'
+import { RealmBackdrop } from '@/dps'
 import InfoPage, { ABOUT_COPY, HELP_COPY, CONTACT_COPY, PRIVACY_COPY, TERMS_COPY } from '@/pages/Info'
 
 const Home = lazy(() => import('@/pages/Home'))
@@ -23,15 +25,18 @@ export default function App() {
   const isPlayRoute = /\/play\/?$/.test(location.pathname)
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="relative flex min-h-screen flex-col">
+      {!isPlayRoute && <RealmBackdrop palette="ember" image="/images/lair.webp" imageOpacity={0.4} />}
+      <ScrollProgress />
       <a href="#main" className="skip-link">
         Skip to content
       </a>
       <CloudSync />
       <Header minimal={isPlayRoute} />
-      <main id="main" className="flex-1">
+      <main id="main" className="relative z-10 flex-1">
         <Suspense fallback={<PageLoader label="Entering the Realm" fullHeight />}>
-          <Routes>
+          <div key={location.pathname} className="route-in">
+          <Routes location={location}>
             <Route path="/" element={<Home />} />
             <Route path="/games" element={<Games mode="all" />} />
             <Route path="/popular" element={<Games mode="popular" />} />
@@ -52,9 +57,14 @@ export default function App() {
             <Route path="/terms" element={<InfoPage {...TERMS_COPY} />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          </div>
         </Suspense>
       </main>
-      {!isPlayRoute && <Footer />}
+      {!isPlayRoute && (
+        <div className="relative z-10">
+          <Footer />
+        </div>
+      )}
     </div>
   )
 }

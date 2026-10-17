@@ -56,7 +56,7 @@ export default function Leaderboard() {
   const empty = !loading && (game ? rows.length === 0 : players.length === 0)
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-10">
+    <div className="mx-auto max-w-3xl py-8 sm:py-10 px-fluid">
       <p className="eyebrow mb-1">Dragon Realm</p>
       <h1 className="flex items-center gap-2 font-display text-2xl font-bold sm:text-3xl">
         <Trophy className="h-7 w-7 text-secondary" /> Leaderboards
@@ -145,7 +145,7 @@ function PlayLink({ slug, external }: { slug: string; external?: string }) {
   const cls =
     'btn-focus mt-4 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-white shadow-glow transition-transform hover:scale-105 hover:bg-primary2'
   return external ? (
-    <a href={external} target="_blank" rel="noopener noreferrer" className={cls}>
+    <a href={external} className={cls}>
       <Play className="h-4 w-4 fill-white" /> Play now
     </a>
   ) : (

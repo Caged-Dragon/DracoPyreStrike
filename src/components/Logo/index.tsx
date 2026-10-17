@@ -17,9 +17,9 @@ export function FullLockup({ className = 'w-64' }: { className?: string }) {
 export default function Logo({ withTagline = false, linkTo = '/' }: { withTagline?: boolean; linkTo?: string | null }) {
   const content = (
     <span className="inline-flex items-center gap-2.5">
-      <Mark className="h-9 w-auto shrink-0 sm:h-10" />
-      <span className="flex flex-col leading-none">
-        <span className="font-display text-base font-bold tracking-tight sm:text-lg">
+      <Mark className="h-[clamp(2rem,1.6rem+1.2vw,2.75rem)] w-auto shrink-0" />
+      <span className="logo-word flex flex-col leading-none">
+        <span className="whitespace-nowrap font-display text-[length:clamp(0.95rem,0.8rem+0.6vw,1.2rem)] font-bold tracking-tight">
           DRACO<span className="text-gradient">PYRE</span> STRIKE
         </span>
         {withTagline && (

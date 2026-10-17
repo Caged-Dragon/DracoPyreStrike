@@ -73,7 +73,7 @@ export const GAMES: GameMeta[] = [
     title: 'Ember Wyrm',
     slug: 'ember-wyrm',
     description:
-      'Guide a young fire-wyrm through ten hand-built lairs, from a green meadow to an ancient dragon\u2019s throne room. Slip through rift portals, dodge collapsing walls, and grow long enough to claim each ember before your own tail catches up. Ember Wyrm lives on its own site \u2014 Play Now opens it in a new tab.',
+      'Guide a young fire-wyrm through ten hand-built lairs, from a green meadow to an ancient dragon\u2019s throne room. Slip through rift portals, dodge collapsing walls, and grow long enough to claim each ember before your own tail catches up. Ember Wyrm lives on its own site \u2014',
     shortDescription: 'Ten lairs, three modes, one hungry wyrm.',
     category: 'arcade',
     tags: ['dragon', 'wyrm', 'classic', 'grid', 'levels', 'portals'],
@@ -136,7 +136,7 @@ export const GAMES: GameMeta[] = [
     title: 'Drakebreaker',
     slug: 'drakebreaker',
     description:
-      'Fifty levels across five realms of ash, ice, storm, void and flame \u2014 shatter every ward-stone, fill your dragon\u2019s rage meter, and unleash its wrath on the toughest blocks. Drakebreaker lives on its own site \u2014 Play Now opens it in a new tab.',
+      'Fifty levels across five realms of ash, ice, storm, void and flame \u2014 shatter every ward-stone, fill your dragon\u2019s rage meter, and unleash its wrath on the toughest blocks. Drakebreaker lives on its own site \u2014',
     shortDescription: '50 levels, 5 realms, one furious dragon.',
     category: 'action',
     tags: ['dragon', 'drakebreaker', 'breakout', 'brick breaker', 'levels', 'classic'],
@@ -166,7 +166,7 @@ export const GAMES: GameMeta[] = [
     title: 'Dragon Flight',
     slug: 'dragon-flight',
     description:
-      'Master the celestial skies on a young dragon\u2019s wings. Fly through five elemental realms that shift without warning, dodging obstacles as the world changes around you. Dragon Flight lives on its own site \u2014 Play Now opens it in a new tab.',
+      'Master the celestial skies on a young dragon\u2019s wings. Fly through five elemental realms that shift without warning, dodging obstacles as the world changes around you. Dragon Flight lives on its own site \u2014',
     shortDescription: 'Five realms, one flight, the sky keeps changing.',
     category: 'arcade',
     tags: ['dragon', 'flight', 'reflex', 'endless', 'one-button', 'elemental realms'],

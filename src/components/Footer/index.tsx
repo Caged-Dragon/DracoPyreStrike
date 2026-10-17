@@ -8,10 +8,10 @@ export default function Footer() {
   const [rating, setRating] = useRating()
 
   return (
-    <footer className="border-t border-text/5 bg-surface/40">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="lg:col-span-1">
+    <footer className="footer-forge mt-[var(--section-y)]">
+      <div className="container-fluid py-[clamp(2rem,1.2rem+3vw,4rem)]">
+        <div className="footer-grid">
+          <div className="min-w-0">
             <FullLockup className="w-40 sm:w-44" />
             <p className="mt-4 max-w-xs text-sm text-textMuted">{SITE_CONFIG.description}</p>
             <p className="eyebrow mt-5">{SITE_CONFIG.studioLine}</p>
@@ -48,7 +48,7 @@ function FooterCol({ title, links }: { title: string; links: readonly { label: s
       <ul className="space-y-2.5">
         {links.map((l) => (
           <li key={l.label}>
-            <Link to={l.to} className="btn-focus rounded text-sm text-textMuted transition-colors hover:text-text">
+            <Link to={l.to} className="link-slide btn-focus rounded text-sm text-textMuted hover:text-text">
               {l.label}
             </Link>
           </li>

@@ -46,7 +46,7 @@ export default function Profile() {
 
   if (!user) {
     return (
-      <div className="mx-auto max-w-lg px-4 py-16 text-center sm:px-6">
+      <div className="mx-auto max-w-lg py-16 text-center px-fluid">
         <UserRound className="mx-auto h-12 w-12 text-textMuted" />
         <h1 className="mt-4 font-display text-xl font-bold">Sign in to see your profile</h1>
         <p className="mt-2 text-sm text-textMuted">
@@ -86,7 +86,7 @@ export default function Profile() {
     'btn-focus w-full rounded-xl border border-text/10 bg-surface2 px-3.5 py-2.5 text-sm text-text placeholder:text-muted'
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-10">
+    <div className="mx-auto max-w-3xl py-8 sm:py-10 px-fluid">
       <div className="flex items-center gap-4">
         <span className="flex h-16 w-16 items-center justify-center rounded-2xl border border-text/10 bg-surface text-3xl" aria-hidden="true">
           {avatarEmoji(profile?.avatar)}

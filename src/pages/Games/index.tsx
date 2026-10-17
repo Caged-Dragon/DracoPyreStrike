@@ -39,7 +39,7 @@ export default function Games({ mode }: { mode: GamesMode }) {
   })
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
+    <div className="container-fluid py-8 sm:py-10">
       <p className="eyebrow mb-1">{meta.eyebrow}</p>
       <h1 className="font-display text-2xl font-bold sm:text-3xl">{meta.title}</h1>
       <p className="mt-1.5 text-sm text-textMuted sm:text-base">{meta.description}</p>

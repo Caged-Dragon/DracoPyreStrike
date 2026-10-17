@@ -15,7 +15,7 @@ export default function Search() {
   )
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
+    <div className="container-fluid py-8 sm:py-10">
       <p className="eyebrow mb-1">Search</p>
       <h1 className="font-display text-2xl font-bold sm:text-3xl">{q ? `Results for \u201c${q}\u201d` : 'Search DracoPyre Strike'}</h1>
 

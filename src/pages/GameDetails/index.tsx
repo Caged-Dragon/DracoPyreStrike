@@ -20,7 +20,7 @@ export default function GameDetails() {
 
   if (!game) {
     return (
-      <div className="mx-auto max-w-xl px-4 py-16 sm:px-6">
+      <div className="mx-auto max-w-xl py-16 px-fluid">
         <EmptyState
           icon={Frown}
           title="We couldn't find this game"
@@ -46,7 +46,7 @@ function GameDetailsContent({ game }: { game: GameMeta }) {
     <div>
       <div className={`relative overflow-hidden bg-gradient-to-br ${game.gradient}`}>
         <div className="absolute inset-0 bg-black/45" aria-hidden="true" />
-        <div className="relative mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 sm:py-14 lg:grid-cols-[320px_1fr] lg:items-center">
+        <div className="container-fluid relative grid gap-8 py-10 sm:py-14 lg:grid-cols-[320px_1fr] lg:items-center">
           <GameThumb
             title={game.title}
             icon={game.icon}
@@ -80,7 +80,7 @@ function GameDetailsContent({ game }: { game: GameMeta }) {
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
               {game.externalUrl ? (
-                <a href={game.externalUrl} target="_blank" rel="noopener noreferrer" className="btn-focus flex items-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-bold text-white shadow-glow transition-transform hover:scale-105 hover:bg-primary2">
+                <a href={game.externalUrl} className="btn-focus flex items-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-bold text-white shadow-glow transition-transform hover:scale-105 hover:bg-primary2">
                   <Play className="h-4 w-4 fill-white" /> Play Now <ExternalLink className="h-3.5 w-3.5" />
                 </a>
               ) : (
@@ -97,12 +97,12 @@ function GameDetailsContent({ game }: { game: GameMeta }) {
                 {fav ? 'Saved' : 'Save'}
               </button>
             </div>
-            {game.externalUrl && <p className="mt-3 text-xs text-white/70">Opens {game.title} on its own site, in a new tab.</p>}
+            {game.externalUrl && <p className="mt-3 text-xs text-white/70">Opens {game.title} on its own site. Use Exit there to return here.</p>}
           </div>
         </div>
       </div>
 
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-10 sm:px-6 sm:py-14 lg:grid-cols-[1fr_300px]">
+      <div className="container-fluid grid gap-10 py-10 sm:py-14 lg:grid-cols-[1fr_300px]">
         <div className="space-y-10">
           <div>
             <h2 className="font-display text-lg font-bold">About {game.title}</h2>
@@ -172,7 +172,7 @@ function GameDetailsContent({ game }: { game: GameMeta }) {
       </div>
 
       {related.length > 0 && (
-        <section className="mx-auto max-w-7xl px-4 pb-14 sm:px-6">
+        <section className="container-fluid pb-14">
           <h2 className="mb-5 font-display text-xl font-bold sm:text-2xl">You May Also Like</h2>
           <GameGrid games={related} />
         </section>
